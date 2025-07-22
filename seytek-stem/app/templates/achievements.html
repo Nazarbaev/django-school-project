@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Новости и события нашей школы</h1>
+              <p class="mb-0">Добро пожаловать в наш блог! Здесь мы делимся самыми свежими новостями, событиями и достижениями нашей школы. Будьте в курсе всего, что происходит в нашем учебном сообществе!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li class="current">Блог</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Blog Posts Section -->
+    <section id="blog-posts" class="blog-posts section">
+
+      <div class="container">
+  <div class="row gy-4">
+    {% for post in page_obj %}
+      <div class="col-lg-4">
+        <article>
+          <div class="post-img">
+            {% with post.images.first as first_image %}
+              {% if first_image %}
+                <img src="{{ first_image.images.url }}" alt="{{ post.title }}" class="img-fluid">
+              {% else %}
+                <img src="{% static 'assets/img/kids.jpg' %}" alt="No image" class="img-fluid">
+              {% endif %}
+            {% endwith %}
+          </div>
+
+
+
+          <h2 class="title">
+            <a href="{% url 'blog-details'  post.id %}">{{ post.title }}</a>
+          </h2>
+        </article>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+    </section><!-- /Blog Posts Section -->
+
+    <!-- Blog Pagination Section -->
+    <section id="blog-pagination" class="blog-pagination section">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <ul class="pagination">
+
+        {% if page_obj.has_previous %}
+          <li>
+            <a href="?page={{ page_obj.previous_page_number }}">
+              <i class="bi bi-chevron-left"></i>
+            </a>
+          </li>
+        {% else %}
+          <li class="disabled"><span><i class="bi bi-chevron-left"></i></span></li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+          {% if num == 1 or num == page_obj.paginator.num_pages or num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+            {% if page_obj.number == num %}
+              <li><a href="#" class="active">{{ num }}</a></li>
+            {% else %}
+              <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+          {% elif num == page_obj.number|add:'-3' or num == page_obj.number|add:'3' %}
+            <li><span>...</span></li>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <li>
+            <a href="?page={{ page_obj.next_page_number }}">
+              <i class="bi bi-chevron-right"></i>
+            </a>
+          </li>
+        {% else %}
+          <li class="disabled"><span><i class="bi bi-chevron-right"></i></span></li>
+        {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+{% endblock body %}

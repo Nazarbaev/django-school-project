@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+<main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Часто задаваемые вопросы (FAQ)</h1>
+                        <p class="mb-0">У вас есть вопросы? Мы собрали самые популярные из них, чтобы помочь вам узнать
+                            больше о нашей школе, образовательном процессе и внеклассных мероприятиях. Если вы не нашли
+                            нужную информацию, свяжитесь с нами – мы всегда рады помочь!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- End Page Title -->
+
+    <!-- Service Details Section -->
+   <section id="faq" class="faq section">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+        <div class="faq-container">
+          {% for faq in faqs %}
+            <div class="faq-item {% if forloop.first %}faq-active{% endif %}">
+              <h3>
+                <span class="num">{{ forloop.counter }}.</span>
+                <span>{{ faq.question }}</span>
+              </h3>
+              <div class="faq-content">
+                <p>{{ faq.answer }}</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+{% endblock body %}
