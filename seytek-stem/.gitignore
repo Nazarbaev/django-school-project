@@ -132,6 +132,4 @@ dmypy.json
 
 # Jetbrains Intellij IDEA
 .idea/
-.env
-SECRET_KEY=your-secret-key
-DEBUG=True
+
