@@ -25,8 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG = os.environ.get("DEBUG", False)
 SECRET_KEY = os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS = [
     'school-website-django-q3a3.onrender.com',
@@ -138,9 +137,12 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'  # URL path to access media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Path where media files are stored
 
+MEDIA_URL = '/media/'  # URL path to access media files
+if os.environ.get('RENDER'):
+    MEDIA_ROOT = '/media'
+else:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
