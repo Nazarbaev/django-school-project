@@ -25,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", False)
-SECRET_KEY = os.environ.get("SECRET_KEY")
+DEBUG = os.environ.get('DEBUG', False)
+SECRET_KEY = os.environ.get('SECRET_KEY')
 ALLOWED_HOSTS = [
     'school-website-django-q3a3.onrender.com',
     'localhost',
