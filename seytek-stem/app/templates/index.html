@@ -411,7 +411,7 @@
       {% for member in teachers %}
       <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
         <div class="member-img">
-          <img src="{{ member.image.url }}" class="img-fluid" alt="{{ member.name }}">
+          <img loading="lazy" src="{{ member.image.url }}" class="img-fluid" alt="{{ member.name }}">
         </div>
         <div class="member-info text-center">
           <h4>{{ member.name }}</h4>
@@ -428,7 +428,7 @@
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
 
-        <img src="{% static 'assets/img/social_media.jpg' %}" alt="">
+        <img loading="lazy" src="{% static 'assets/img/social_media.jpg' %}" alt="">
 
         <div class="container">
             <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
@@ -464,9 +464,9 @@
           <div class="post-img">
             {% with post.images.first as first_image %}
               {% if first_image %}
-                <img src="{{ first_image.images.url }}" alt="{{ post.title }}" class="img-fluid">
+                <img loading="lazy" src="{{ first_image.images.url }}" alt="{{ post.title }}" class="img-fluid">
               {% else %}
-                <img src="{% static 'assets/img/kids.jpg' %}" alt="No image" class="img-fluid">
+                <img loading="lazy" src="{% static 'assets/img/kids.jpg' %}" alt="No image" class="img-fluid">
               {% endif %}
             {% endwith %}
           </div>
