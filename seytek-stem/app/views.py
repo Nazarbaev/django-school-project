@@ -41,8 +41,7 @@ class GalleryView(ListView):
         context['selected_category'] = self.request.GET.get('category')
         return context
 
-class StarterPageView(TemplateView):
-    template_name = "starter-page.html"
+
 
 
 def blog_index(request):
@@ -76,10 +75,7 @@ def achievements_index(request):
     return render(request, 'achievements.html', {'page_obj': page_obj})
 
 
-class AchievementsDetailsView(DetailView):
-    model = BlogPost
-    template_name = "achievements-details.html"
-    context_object_name = "post"
+
 
 class CambridgeView(TemplateView):
     template_name = "cambridge.html"
