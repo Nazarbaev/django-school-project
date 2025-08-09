@@ -32,6 +32,8 @@ ALLOWED_HOSTS = [
     'school-website-django-q3a3.onrender.com',
     'localhost',
     '127.0.0.1',
+    'www.seytekstem.edu.kg',
+    'seytekstem.edu.kg'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
