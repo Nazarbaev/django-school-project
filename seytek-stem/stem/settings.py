@@ -41,8 +41,7 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://school-website-django-q3a3.onrender.com',
     'http://localhost:8000',
-    'www.ambassador.edu.kg',
-    'ambassador.edu.kg',
+
 ]
 
 
